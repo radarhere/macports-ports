@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-selenium
-version             4.3.0
+version             4.7.2
 license             Apache-2
 maintainers         {dstrubbe @dstrubbe} openmaintainer
 platforms           darwin
@@ -17,7 +17,7 @@ long_description    The selenium package is used to automate web \
 
 homepage            https://www.seleniumhq.org/
 
-python.versions     37 38 39 310
+python.versions     37 38 39 310 311
 
 if {${name} ne ${subport}} {
     depends_build-append \
@@ -27,22 +27,19 @@ if {${name} ne ${subport}} {
     depends_run-append \
                     port:py${python.version}-urllib3
 
-    master_sites    https://files.pythonhosted.org/packages/85/67/bea2994e161226ee09c3ee4a1a8ebdf2c033136228afdecab530910f158a/
+    master_sites    https://files.pythonhosted.org/packages/00/7b/d511219e116fd4d18b0dd6e32fb5ec7a0a169165f8132111a7422d5952f5/
     distname        selenium-${version}-py3-none-any
 
-    checksums       rmd160  15937b3de15cd36438283e9cf86348063f0f49aa \
-                    sha256  f67402b8f973aaa98d9c55b8f9aa63532009cd1859b2222a8b9800354942d8bc \
-                    size    981378
+    checksums       rmd160  b2dff7da76651b75a7a3857c675a1268f724dd63 \
+                    sha256  06a1c7d9f313130b21c3218ddd8852070d0e7419afdd31f96160cd576555a5ce \
+                    size    6305613
     extract.suffix  .whl
     extract.only
 
     build           {}
 
     destroot.cmd    pip-${python.branch}
-    destroot.args   --ignore-installed \
-                    --no-cache-dir \
-                    --no-dependencies \
-                    --root ${destroot} \
+    destroot.args   --no-cache-dir \
                     ${distpath}/${distfiles}
     destroot.post_args
 
